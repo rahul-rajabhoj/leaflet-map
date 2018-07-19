@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Map Demo According to service Provider</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+        crossorigin="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css" />
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="leftSidebar">
+            <!-- Current map view details will display here -->
+            <div class="contentHeader" id="functionDetails">
+
+
+            </div>
+
+            <!-- Sample map will display will here -->
+            <div class="mapWrapper" id="mapDiv">
+
+            </div>
+        </div>
+        <div id="#messages"></div>
+        <div class="rightSidebar">
+            <input type="button" value="Add Marker" onClick="showMarker();">
+            <input type="button" value="Add Multiple Marker" onClick="addMultipleMarker();">
+            <input type="button" value="Add Custom Lat Long" onClick="addCustomMarker();">
+            <input type="button" value="Open Infowindow" onClick="openInfowindow();">
+            <input type="button" value="Marker Animation" onClick="markerAnimation();">
+            <input type="button" value="Show Route" onClick="drawRoute();">
+            <input type="button" value="Add Polygon" onClick="drawPolygon();">
+            <input type="button" value="Add Fill Polygon" onClick="drawFillPolygon();">
+            <input type="button" value="Add Circle" onClick="drawCircle();">
+            <input type="button" value="Show Cluster" onClick="showCluster();">
+            <!--<input type="button" value="Select map Provider" onClick="selectMap();">-->
+            <input type="button" value="Reset Map View" onClick="setMapView();">
+            <input type="button" value="Clear Map" onClick="clearMap();">
+            <input type="button" value="Disable Draw Toolbar" id="toggleToolbar" onClick="toggleToolbar();">
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js" integrity="sha512-WXoSHqw/t26DszhdMhOXOkI7qCiv5QWXhH9R7CgvgZMHz1ImlkVQ3uNsiQKu5wwbbxtPzFXd1hK4tzno2VqhpA=="
+        crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster-src.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <script type="text/javascript" src="csf/leaflet.js"></script>
+</body>
+
+</html>
