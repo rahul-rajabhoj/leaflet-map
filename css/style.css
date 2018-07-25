@@ -137,3 +137,17 @@ input[type=button] {
     display: inline-block;
     overflow: auto;
 }
+
+.leaflet-edit-resize{
+    max-width: 10px;
+    max-height: 10px;
+    margin-left: -5px !important;
+    margin-top: -5px !important;
+}
+
+.leaflet-edit-move {
+    max-width: 10px;
+    max-height: 10px;
+    margin-left: -5px !important;
+    margin-top: -5px !important;
+}
