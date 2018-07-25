@@ -3,6 +3,7 @@ const mapboxAttrib = 'Map data &copy; <a href="https://www.openstreetmap.org/">O
     '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
     'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
 const lat = 21.145845, long = 79.088282;
+
 var marker, route, circle, polyline, fillPolygon, mapMarkers = [], mapCircles = [], flag = 1, drawnItems, drawControl;
 
 var myIcon1 = L.icon({
@@ -66,20 +67,12 @@ function drawToolbar() {
     mymap.addLayer(drawnItems);
 
     drawControl = new L.Control.Draw({
-        edit: {
-            featureGroup: drawnItems
-        },
-    });
-
-    mymap.on('draw:created', function (e) {
-        var type = e.layerType,
-            layer = e.layer;
-        drawnItems.addLayer(layer);
-    });
-
-    drawControl = new L.Control.Draw({
         draw: {
             polygon: {
+                icon: new L.DivIcon({
+                    iconSize: new L.Point(10, 10),
+                    className: 'leaflet-div-icon leaflet-editing-icon'
+                }),
                 shapeOptions: {
                     color: 'purple'
                 },
@@ -90,9 +83,12 @@ function drawToolbar() {
                 },
                 showArea: true,
                 metric: false,
-                repeatMode: true
             },
             polyline: {
+                icon: new L.DivIcon({
+                    iconSize: new L.Point(10, 10),
+                    className: 'leaflet-div-icon leaflet-editing-icon'
+                }),
                 shapeOptions: {
                     color: 'red'
                 },
@@ -112,11 +108,37 @@ function drawToolbar() {
             },
         },
         edit: {
-            featureGroup: drawnItems
+            featureGroup: drawnItems,
+            edit: false,
         }
     });
     mymap.addControl(drawControl);
 }
+
+mymap.on('draw:created', function (e) {
+    var type = e.layerType,
+        layer = e.layer;
+    if (type === 'marker') {
+        // Makes marker draggable
+        layer.options.draggable = true;
+        markerEffect(layer);
+    }
+    else {
+        // Makes rest layers editable
+        layer.editing.enable();
+    }
+    drawnItems.addLayer(layer);
+});
+
+
+L.Edit.Poly = L.Edit.Poly.extend({
+    options: {
+        icon: new L.DivIcon({
+            iconSize: new L.Point(10, 10),
+            className: 'leaflet-div-icon leaflet-editing-icon'
+        })
+    }
+});
 
 /**
 * function for showing marker on map
